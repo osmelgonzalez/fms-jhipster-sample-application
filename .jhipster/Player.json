@@ -33,6 +33,7 @@
       "fieldType": "LocalDate"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Player",
   "pagination": "pagination",
   "relationships": [

@@ -30,6 +30,7 @@
       "fieldType": "Instant"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Tournament",
   "pagination": "pagination",
   "relationships": [

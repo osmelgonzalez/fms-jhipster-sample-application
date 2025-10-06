@@ -376,11 +376,7 @@ class PlayerResourceIT {
         Player partialUpdatedPlayer = new Player();
         partialUpdatedPlayer.setId(player.getId());
 
-        partialUpdatedPlayer
-            .firstName(UPDATED_FIRST_NAME)
-            .middleInitial(UPDATED_MIDDLE_INITIAL)
-            .gender(UPDATED_GENDER)
-            .dateOfBirth(UPDATED_DATE_OF_BIRTH);
+        partialUpdatedPlayer.middleInitial(UPDATED_MIDDLE_INITIAL).lastName(UPDATED_LAST_NAME).dateOfBirth(UPDATED_DATE_OF_BIRTH);
 
         restPlayerMockMvc
             .perform(

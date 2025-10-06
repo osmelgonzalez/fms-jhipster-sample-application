@@ -18,6 +18,7 @@
       "fieldValidateRulesMaxlength": "255"
     }
   ],
+  "incrementalChangelog": false,
   "name": "FileData",
   "pagination": "pagination",
   "relationships": [],

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { IPlayer } from 'app/shared/model/player.model';
 
 export interface IGuardian {
@@ -6,6 +7,8 @@ export interface IGuardian {
   middleInitial?: string | null;
   lastName?: string;
   relationshipToPlayer?: string;
+  dateOfBirth?: dayjs.Dayjs;
+  testField?: string | null;
   players?: IPlayer[] | null;
 }
 

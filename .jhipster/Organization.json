@@ -12,6 +12,7 @@
       "fieldValidateRulesMaxlength": "255"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Organization",
   "pagination": "pagination",
   "relationships": [],

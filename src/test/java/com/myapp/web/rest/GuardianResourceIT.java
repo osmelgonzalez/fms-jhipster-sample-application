@@ -14,6 +14,8 @@ import com.myapp.repository.GuardianRepository;
 import com.myapp.service.dto.GuardianDTO;
 import com.myapp.service.mapper.GuardianMapper;
 import jakarta.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
@@ -45,6 +47,12 @@ class GuardianResourceIT {
 
     private static final String DEFAULT_RELATIONSHIP_TO_PLAYER = "AAAAAAAAAA";
     private static final String UPDATED_RELATIONSHIP_TO_PLAYER = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_DATE_OF_BIRTH = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_OF_BIRTH = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_TEST_FIELD = "AAAAAAAAAA";
+    private static final String UPDATED_TEST_FIELD = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/guardians";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -82,7 +90,9 @@ class GuardianResourceIT {
             .firstName(DEFAULT_FIRST_NAME)
             .middleInitial(DEFAULT_MIDDLE_INITIAL)
             .lastName(DEFAULT_LAST_NAME)
-            .relationshipToPlayer(DEFAULT_RELATIONSHIP_TO_PLAYER);
+            .relationshipToPlayer(DEFAULT_RELATIONSHIP_TO_PLAYER)
+            .dateOfBirth(DEFAULT_DATE_OF_BIRTH)
+            .testField(DEFAULT_TEST_FIELD);
     }
 
     /**
@@ -96,7 +106,9 @@ class GuardianResourceIT {
             .firstName(UPDATED_FIRST_NAME)
             .middleInitial(UPDATED_MIDDLE_INITIAL)
             .lastName(UPDATED_LAST_NAME)
-            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER);
+            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER)
+            .dateOfBirth(UPDATED_DATE_OF_BIRTH)
+            .testField(UPDATED_TEST_FIELD);
     }
 
     @BeforeEach
@@ -207,6 +219,23 @@ class GuardianResourceIT {
 
     @Test
     @Transactional
+    void checkDateOfBirthIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        guardian.setDateOfBirth(null);
+
+        // Create the Guardian, which fails.
+        GuardianDTO guardianDTO = guardianMapper.toDto(guardian);
+
+        restGuardianMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(guardianDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllGuardians() throws Exception {
         // Initialize the database
         insertedGuardian = guardianRepository.saveAndFlush(guardian);
@@ -220,7 +249,9 @@ class GuardianResourceIT {
             .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME)))
             .andExpect(jsonPath("$.[*].middleInitial").value(hasItem(DEFAULT_MIDDLE_INITIAL)))
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME)))
-            .andExpect(jsonPath("$.[*].relationshipToPlayer").value(hasItem(DEFAULT_RELATIONSHIP_TO_PLAYER)));
+            .andExpect(jsonPath("$.[*].relationshipToPlayer").value(hasItem(DEFAULT_RELATIONSHIP_TO_PLAYER)))
+            .andExpect(jsonPath("$.[*].dateOfBirth").value(hasItem(DEFAULT_DATE_OF_BIRTH.toString())))
+            .andExpect(jsonPath("$.[*].testField").value(hasItem(DEFAULT_TEST_FIELD)));
     }
 
     @Test
@@ -238,7 +269,9 @@ class GuardianResourceIT {
             .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME))
             .andExpect(jsonPath("$.middleInitial").value(DEFAULT_MIDDLE_INITIAL))
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME))
-            .andExpect(jsonPath("$.relationshipToPlayer").value(DEFAULT_RELATIONSHIP_TO_PLAYER));
+            .andExpect(jsonPath("$.relationshipToPlayer").value(DEFAULT_RELATIONSHIP_TO_PLAYER))
+            .andExpect(jsonPath("$.dateOfBirth").value(DEFAULT_DATE_OF_BIRTH.toString()))
+            .andExpect(jsonPath("$.testField").value(DEFAULT_TEST_FIELD));
     }
 
     @Test
@@ -264,7 +297,9 @@ class GuardianResourceIT {
             .firstName(UPDATED_FIRST_NAME)
             .middleInitial(UPDATED_MIDDLE_INITIAL)
             .lastName(UPDATED_LAST_NAME)
-            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER);
+            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER)
+            .dateOfBirth(UPDATED_DATE_OF_BIRTH)
+            .testField(UPDATED_TEST_FIELD);
         GuardianDTO guardianDTO = guardianMapper.toDto(updatedGuardian);
 
         restGuardianMockMvc
@@ -354,7 +389,7 @@ class GuardianResourceIT {
         Guardian partialUpdatedGuardian = new Guardian();
         partialUpdatedGuardian.setId(guardian.getId());
 
-        partialUpdatedGuardian.middleInitial(UPDATED_MIDDLE_INITIAL).relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER);
+        partialUpdatedGuardian.firstName(UPDATED_FIRST_NAME).middleInitial(UPDATED_MIDDLE_INITIAL).testField(UPDATED_TEST_FIELD);
 
         restGuardianMockMvc
             .perform(
@@ -386,7 +421,9 @@ class GuardianResourceIT {
             .firstName(UPDATED_FIRST_NAME)
             .middleInitial(UPDATED_MIDDLE_INITIAL)
             .lastName(UPDATED_LAST_NAME)
-            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER);
+            .relationshipToPlayer(UPDATED_RELATIONSHIP_TO_PLAYER)
+            .dateOfBirth(UPDATED_DATE_OF_BIRTH)
+            .testField(UPDATED_TEST_FIELD);
 
         restGuardianMockMvc
             .perform(

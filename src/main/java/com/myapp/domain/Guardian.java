@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
@@ -43,6 +44,13 @@ public class Guardian implements Serializable {
     @Size(max = 255)
     @Column(name = "relationship_to_player", length = 255, nullable = false)
     private String relationshipToPlayer;
+
+    @NotNull
+    @Column(name = "date_of_birth", nullable = false)
+    private LocalDate dateOfBirth;
+
+    @Column(name = "test_field")
+    private String testField;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "guardians")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -116,6 +124,32 @@ public class Guardian implements Serializable {
         this.relationshipToPlayer = relationshipToPlayer;
     }
 
+    public LocalDate getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public Guardian dateOfBirth(LocalDate dateOfBirth) {
+        this.setDateOfBirth(dateOfBirth);
+        return this;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getTestField() {
+        return this.testField;
+    }
+
+    public Guardian testField(String testField) {
+        this.setTestField(testField);
+        return this;
+    }
+
+    public void setTestField(String testField) {
+        this.testField = testField;
+    }
+
     public Set<Player> getPlayers() {
         return this.players;
     }
@@ -175,6 +209,8 @@ public class Guardian implements Serializable {
             ", middleInitial='" + getMiddleInitial() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", relationshipToPlayer='" + getRelationshipToPlayer() + "'" +
+            ", dateOfBirth='" + getDateOfBirth() + "'" +
+            ", testField='" + getTestField() + "'" +
             "}";
     }
 }

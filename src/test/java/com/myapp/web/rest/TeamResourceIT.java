@@ -300,8 +300,6 @@ class TeamResourceIT {
         Team partialUpdatedTeam = new Team();
         partialUpdatedTeam.setId(team.getId());
 
-        partialUpdatedTeam.name(UPDATED_NAME);
-
         restTeamMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedTeam.getId())

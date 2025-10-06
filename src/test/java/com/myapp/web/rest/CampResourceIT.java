@@ -313,8 +313,6 @@ class CampResourceIT {
         Camp partialUpdatedCamp = new Camp();
         partialUpdatedCamp.setId(camp.getId());
 
-        partialUpdatedCamp.status(UPDATED_STATUS);
-
         restCampMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCamp.getId())

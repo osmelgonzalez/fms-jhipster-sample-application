@@ -1,11 +1,11 @@
-id;first_name;middle_initial;last_name;relationship_to_player
-1;Agnes;u;Bogisich;when
-2;Santino;p;Smith;while inborn
-3;Corine;h;Jast;after roger
-4;Elvis;u;Kirlin;depend hmph
-5;Wilbert;f;Kuvalis;in hefty forenenst
-6;Horacio;a;Kuhn;catch privilege
-7;Pietro;w;Hodkiewicz;bin like decisive
-8;Delphine;u;Beahan;limited satisfy celebrate
-9;Elody;s;Brakus;tousle toaster yowza
-10;Omer;t;Mraz;gorgeous
+id;first_name;middle_initial;last_name;relationship_to_player;date_of_birth
+1;Agnes;u;Bogisich;when;2025-10-06
+2;Charlie;s;Tromp;evenly;2025-10-05
+3;Emil;d;Legros;aw;2025-10-06
+4;Jarvis;e;Bernhard;short;2025-10-05
+5;Maxine;s;Berge;sadly;2025-10-06
+6;Karelle;h;Marvin;ew pleasant crossly;2025-10-05
+7;Bertrand;s;Goyette;lender considering phooey;2025-10-05
+8;Travon;u;Stracke;important cinder;2025-10-05
+9;Agnes;n;Weimann;phooey;2025-10-05
+10;Elody;s;Brakus;tousle toaster yowza;2025-10-06

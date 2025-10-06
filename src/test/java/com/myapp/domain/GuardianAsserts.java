@@ -52,7 +52,9 @@ public class GuardianAsserts {
             .satisfies(a -> assertThat(a.getLastName()).as("check lastName").isEqualTo(expected.getLastName()))
             .satisfies(a ->
                 assertThat(a.getRelationshipToPlayer()).as("check relationshipToPlayer").isEqualTo(expected.getRelationshipToPlayer())
-            );
+            )
+            .satisfies(a -> assertThat(a.getDateOfBirth()).as("check dateOfBirth").isEqualTo(expected.getDateOfBirth()))
+            .satisfies(a -> assertThat(a.getTestField()).as("check testField").isEqualTo(expected.getTestField()));
     }
 
     /**

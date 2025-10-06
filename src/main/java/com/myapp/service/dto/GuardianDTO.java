@@ -2,6 +2,7 @@ package com.myapp.service.dto;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -28,6 +29,11 @@ public class GuardianDTO implements Serializable {
     @NotNull
     @Size(max = 255)
     private String relationshipToPlayer;
+
+    @NotNull
+    private LocalDate dateOfBirth;
+
+    private String testField;
 
     private Set<PlayerDTO> players = new HashSet<>();
 
@@ -71,6 +77,22 @@ public class GuardianDTO implements Serializable {
         this.relationshipToPlayer = relationshipToPlayer;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getTestField() {
+        return testField;
+    }
+
+    public void setTestField(String testField) {
+        this.testField = testField;
+    }
+
     public Set<PlayerDTO> getPlayers() {
         return players;
     }
@@ -109,6 +131,8 @@ public class GuardianDTO implements Serializable {
             ", middleInitial='" + getMiddleInitial() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", relationshipToPlayer='" + getRelationshipToPlayer() + "'" +
+            ", dateOfBirth='" + getDateOfBirth() + "'" +
+            ", testField='" + getTestField() + "'" +
             ", players=" + getPlayers() +
             "}";
     }

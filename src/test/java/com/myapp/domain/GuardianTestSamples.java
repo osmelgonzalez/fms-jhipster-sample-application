@@ -15,7 +15,8 @@ public class GuardianTestSamples {
             .firstName("firstName1")
             .middleInitial("middleInitial1")
             .lastName("lastName1")
-            .relationshipToPlayer("relationshipToPlayer1");
+            .relationshipToPlayer("relationshipToPlayer1")
+            .testField("testField1");
     }
 
     public static Guardian getGuardianSample2() {
@@ -24,7 +25,8 @@ public class GuardianTestSamples {
             .firstName("firstName2")
             .middleInitial("middleInitial2")
             .lastName("lastName2")
-            .relationshipToPlayer("relationshipToPlayer2");
+            .relationshipToPlayer("relationshipToPlayer2")
+            .testField("testField2");
     }
 
     public static Guardian getGuardianRandomSampleGenerator() {
@@ -33,6 +35,7 @@ public class GuardianTestSamples {
             .firstName(UUID.randomUUID().toString())
             .middleInitial(UUID.randomUUID().toString())
             .lastName(UUID.randomUUID().toString())
-            .relationshipToPlayer(UUID.randomUUID().toString());
+            .relationshipToPlayer(UUID.randomUUID().toString())
+            .testField(UUID.randomUUID().toString());
     }
 }

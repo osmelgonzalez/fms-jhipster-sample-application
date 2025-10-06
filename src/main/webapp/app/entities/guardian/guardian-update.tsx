@@ -129,6 +129,17 @@ export const GuardianUpdate = () => {
                   maxLength: { value: 255, message: 'This field cannot be longer than 255 characters.' },
                 }}
               />
+              <ValidatedField
+                label="Date Of Birth"
+                id="guardian-dateOfBirth"
+                name="dateOfBirth"
+                data-cy="dateOfBirth"
+                type="date"
+                validate={{
+                  required: { value: true, message: 'This field is required.' },
+                }}
+              />
+              <ValidatedField label="Test Field" id="guardian-testField" name="testField" data-cy="testField" type="text" />
               <ValidatedField label="Players" id="guardian-players" data-cy="players" type="select" multiple name="players">
                 <option value="" key="0" />
                 {players

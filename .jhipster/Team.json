@@ -12,6 +12,7 @@
       "fieldValidateRulesMaxlength": "255"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Team",
   "pagination": "pagination",
   "relationships": [

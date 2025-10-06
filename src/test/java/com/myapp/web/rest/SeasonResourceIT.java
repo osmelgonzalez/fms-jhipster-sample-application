@@ -410,7 +410,7 @@ class SeasonResourceIT {
         Season partialUpdatedSeason = new Season();
         partialUpdatedSeason.setId(season.getId());
 
-        partialUpdatedSeason.status(UPDATED_STATUS);
+        partialUpdatedSeason.start(UPDATED_START);
 
         restSeasonMockMvc
             .perform(

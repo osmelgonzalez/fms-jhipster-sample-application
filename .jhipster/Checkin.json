@@ -11,6 +11,7 @@
       "fieldValidateRules": ["required"]
     }
   ],
+  "incrementalChangelog": false,
   "name": "Checkin",
   "pagination": "pagination",
   "relationships": [

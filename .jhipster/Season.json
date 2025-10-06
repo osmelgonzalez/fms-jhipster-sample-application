@@ -32,6 +32,7 @@
       "fieldValidateRules": ["required"]
     }
   ],
+  "incrementalChangelog": false,
   "name": "Season",
   "pagination": "pagination",
   "relationships": [

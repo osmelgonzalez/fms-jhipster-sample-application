@@ -28,8 +28,18 @@
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
       "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "testField",
+      "fieldType": "String"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Guardian",
   "pagination": "pagination",
   "relationships": [

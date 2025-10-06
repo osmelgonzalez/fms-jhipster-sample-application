@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Table } from 'reactstrap';
-import { JhiItemCount, JhiPagination, getPaginationState } from 'react-jhipster';
+import { JhiItemCount, JhiPagination, TextFormat, getPaginationState } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -122,6 +123,12 @@ export const Guardian = () => {
                 <th className="hand" onClick={sort('relationshipToPlayer')}>
                   Relationship To Player <FontAwesomeIcon icon={getSortIconByFieldName('relationshipToPlayer')} />
                 </th>
+                <th className="hand" onClick={sort('dateOfBirth')}>
+                  Date Of Birth <FontAwesomeIcon icon={getSortIconByFieldName('dateOfBirth')} />
+                </th>
+                <th className="hand" onClick={sort('testField')}>
+                  Test Field <FontAwesomeIcon icon={getSortIconByFieldName('testField')} />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -137,6 +144,10 @@ export const Guardian = () => {
                   <td>{guardian.middleInitial}</td>
                   <td>{guardian.lastName}</td>
                   <td>{guardian.relationshipToPlayer}</td>
+                  <td>
+                    {guardian.dateOfBirth ? <TextFormat type="date" value={guardian.dateOfBirth} format={APP_LOCAL_DATE_FORMAT} /> : null}
+                  </td>
+                  <td>{guardian.testField}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/guardian/${guardian.id}`} color="info" size="sm" data-cy="entityDetailsButton">

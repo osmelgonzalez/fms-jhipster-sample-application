@@ -348,7 +348,7 @@ class TournamentResourceIT {
         Tournament partialUpdatedTournament = new Tournament();
         partialUpdatedTournament.setId(tournament.getId());
 
-        partialUpdatedTournament.additionalInfo(UPDATED_ADDITIONAL_INFO).status(UPDATED_STATUS).ends(UPDATED_ENDS);
+        partialUpdatedTournament.start(UPDATED_START).ends(UPDATED_ENDS);
 
         restTournamentMockMvc
             .perform(

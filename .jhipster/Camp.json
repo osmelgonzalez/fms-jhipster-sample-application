@@ -22,6 +22,7 @@
       "fieldValues": "ACTIVE,INACTIVE,REGISTRATION_CLOSED"
     }
   ],
+  "incrementalChangelog": false,
   "name": "Camp",
   "pagination": "pagination",
   "relationships": [
