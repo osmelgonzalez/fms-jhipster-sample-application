@@ -1,0 +1,28 @@
+{
+  "annotations": {
+    "changelogDate": "20251006122041"
+  },
+  "applications": ["myApp"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Checkin",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "checkins",
+      "relationshipName": "player",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

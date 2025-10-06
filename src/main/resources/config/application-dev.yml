@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.fms.myapp: DEBUG
+    com.myapp: DEBUG
 
 spring:
   devtools:
@@ -37,8 +37,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/db/FMS;DB_CLOSE_DELAY=-1
-    username: FMS
+    url: jdbc:h2:file:./build/h2db/db/myApp;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    username: myApp
     password:
     hikari:
       poolName: Hikari

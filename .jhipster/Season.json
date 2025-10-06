@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20251006122037"
+  },
+  "applications": ["myApp"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "additionalInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CompetitionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE,INACTIVE,REGISTRATION_CLOSED"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ends",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Season",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "fileData",
+      "relationshipName": "image",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "organization",
+      "relationshipName": "organization",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,91 @@
+application {
+  config {
+    baseName myApp
+    applicationType monolith
+    packageName com.myapp
+    authenticationType jwt
+    prodDatabaseType mysql
+    clientFramework react
+  }
+  entities *
+}
+
+enum CompetitionStatus { ACTIVE, INACTIVE, REGISTRATION_CLOSED }
+enum Gender { MALE, FEMALE }
+
+entity Tournament {
+  name String required maxlength(255)
+  additionalInfo String
+  status CompetitionStatus required
+  start Instant
+  ends Instant
+}
+
+entity Team {
+  name String maxlength(255)
+}
+
+entity Season {
+  name String required maxlength(255)
+  additionalInfo String
+  status CompetitionStatus required
+  start Instant required
+  ends Instant required
+}
+
+entity Player {
+  firstName String required maxlength(255)
+  middleInitial String maxlength(1)
+  lastName String required maxlength(255)
+  gender Gender
+  dateOfBirth LocalDate
+}
+
+entity Organization {
+  name String required maxlength(255)
+}
+
+entity Guardian {
+  firstName String required maxlength(255)
+  middleInitial String maxlength(1)
+  lastName String required maxlength(255)
+  relationshipToPlayer String required maxlength(255)
+}
+
+entity Checkin {
+  timestamp Instant required
+}
+
+entity Camp {
+  name String required maxlength(255)
+  additionalInfo String
+  status CompetitionStatus required
+}
+
+entity FileData {
+  uid String required maxlength(255)
+  fileName String required maxlength(255)
+}
+
+relationship ManyToMany {
+  Team{players} to Player{teams}
+  Player{guardians} to Guardian{players}
+}
+
+relationship OneToMany {
+  Player{checkins} to Checkin{player required}
+}
+
+relationship ManyToOne {
+  Season{organization(name)} to Organization
+}
+
+relationship OneToOne {
+  Tournament{image} to FileData
+  Season{image} to FileData
+  Camp{image} to FileData
+}
+
+dto * with mapstruct
+service * with serviceClass
+paginate * with pagination

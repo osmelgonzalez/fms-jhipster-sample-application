@@ -1,14 +1,14 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-name: fms
+name: myapp
 services:
   app:
-    image: fms
+    image: myapp
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/FMS
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/FMS
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/myapp?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - SPRING_LIQUIBASE_URL=jdbc:mysql://mysql:3306/myapp?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
     ports:
       - 127.0.0.1:8080:8080
     healthcheck:
@@ -21,9 +21,9 @@ services:
       timeout: 5s
       retries: 40
     depends_on:
-      postgresql:
+      mysql:
         condition: service_healthy
-  postgresql:
+  mysql:
     extends:
-      file: ./postgresql.yml
-      service: postgresql
+      file: ./mysql.yml
+      service: mysql

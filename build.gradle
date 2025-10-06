@@ -13,7 +13,7 @@ plugins {
     // jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
-group = "com.fms.myapp"
+group = "com.myapp"
 version = "0.0.1-SNAPSHOT"
 
 description = ""
@@ -74,7 +74,7 @@ eclipse {
 defaultTasks "bootRun"
 
 springBoot {
-    mainClass = "com.fms.myapp.FmsApp"
+    mainClass = "com.myapp.MyApp"
 }
 
 test {

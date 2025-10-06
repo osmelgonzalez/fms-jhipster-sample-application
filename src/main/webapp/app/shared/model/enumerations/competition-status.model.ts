@@ -1,0 +1,7 @@
+export enum CompetitionStatus {
+  ACTIVE = 'ACTIVE',
+
+  INACTIVE = 'INACTIVE',
+
+  REGISTRATION_CLOSED = 'REGISTRATION_CLOSED',
+}

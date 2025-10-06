@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20251006122035"
+  },
+  "applications": ["myApp"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "additionalInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CompetitionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE,INACTIVE,REGISTRATION_CLOSED"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "ends",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Tournament",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "fileData",
+      "relationshipName": "image",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

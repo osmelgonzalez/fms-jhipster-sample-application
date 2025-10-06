@@ -11,8 +11,8 @@
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/testdb/fms;DB_CLOSE_DELAY=-1
-    username: FMS
+    url: jdbc:h2:file:./build/h2db/testdb/myapp;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    username: myApp
     password:
     hikari:
       auto-commit: false

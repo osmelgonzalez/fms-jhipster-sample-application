@@ -1,7 +1,7 @@
 sourceSets {
     test {
         java {
-            exclude 'com/fms/myapp//config/PostgreSqlTestContainer.java'
+            exclude 'com/myapp//config/MysqlTestContainer.java'
         }
     }
 }

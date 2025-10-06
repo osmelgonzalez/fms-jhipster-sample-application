@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20251006122042"
+  },
+  "applications": ["myApp"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "additionalInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CompetitionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE,INACTIVE,REGISTRATION_CLOSED"
+    }
+  ],
+  "name": "Camp",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "fileData",
+      "relationshipName": "image",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
